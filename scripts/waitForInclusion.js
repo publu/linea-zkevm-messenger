@@ -24,7 +24,7 @@ async function main() {
           clearInterval(checkInterval);
           resolve();
         } else {
-          console.log("The message hasn't been included yet. Current Status: ", status)
+          console.log("The message hasn't been included yet on the L2 Bridge Contract. Current Status: ", status)
         }
       } catch (error) {
         console.error('Error checking message status:', error);
