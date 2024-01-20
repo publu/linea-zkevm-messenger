@@ -2,10 +2,10 @@ require('@nomiclabs/hardhat-waffle');
 require('hardhat-deploy')
 require('dotenv').config()
 
-const privateKey = process.env.PRIVATE_KEY
+const privateKey = process.env.KEY
 
 if (!privateKey) {
-  throw new Error('PRIVATE_KEY not set')
+  throw new Error('KEY not set')
 }
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -27,7 +27,7 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 module.exports = {
   defaultNetwork: 'gorli',
   networks: {
-    polygonzkevm: {
+    linea_gorli: {
       url: process.env.LINEA_GORLI_RPC || 'https://rpc.goerli.linea.build',
       accounts: [privateKey]
     },
@@ -36,5 +36,5 @@ module.exports = {
       accounts: [privateKey]
     },
   },
-  solidity: '0.8.4',
+  solidity: '0.8.19',
 };
