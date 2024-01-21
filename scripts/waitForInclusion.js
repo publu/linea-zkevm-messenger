@@ -13,13 +13,11 @@ async function main() {
   const signer = await hre.ethers.getSigner();
   const bridgeContract = new hre.ethers.Contract(l2BridgeAddress, bridgeAbi, signer);
 
-  const messageHash = hre.ethers.utils.solidityKeccak256(['bytes32'], [l1TxHash]);
-
   await new Promise((resolve, reject) => {
     const checkInclusion = async () => {
       try {
-        const status = await bridgeContract.inboxL1L2MessageStatus(messageHash);
-        if (status === 1) {
+        const status = await bridgeContract.inboxL1L2MessageStatus(l1TxHash);
+        if (status == 1) {
           console.log('The message has been included.');
           clearInterval(checkInterval);
           resolve();
