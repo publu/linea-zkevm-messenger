@@ -24,8 +24,9 @@ async function main() {
 
   // Call the claimMessage function on the bridge with the provided variables
   try {
-    await bridgeContract.claimMessage(_from, _to, _fee, _value, _feeRecipient, _calldata, _nonce);
+    const tx = await bridgeContract.claimMessage(_from, _to, _fee, _value, _feeRecipient, _calldata, _nonce);
     console.log('Message claimed on the bridge.');
+    console.log("tx details: ", tx);
   } catch (error) {
     console.error('An error occurred while claiming the message on the bridge:', error);
   }
